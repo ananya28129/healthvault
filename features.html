@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthVault Features</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5/1hb7Gap6zFJ6TzjIj21tMPbPj5zVpR6Rslpq0wW5Vx6I1iKwV0v+Ux88VXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <h1 class="logo">HealthVault</h1>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html" class="active">Features</a></li>
+                    <li><a href="tracker.html">Tracker</a></li>
+                    <li><a href="emergency.html">Emergency</a></li>
+                    <li><a href="records.html">Records</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="features-page">
+        <div class="container">
+            <h2 class="page-title">Explore Our Features</h2>
+            <!-- Tab Navigation -->
+            <ul class="tab-nav" id="featureTabs">
+                <li class="tab-link active" data-tab="tracking"><i class="fa-solid fa-shoe-prints"></i> Health Tracking</li>
+                <li class="tab-link" data-tab="insights"><i class="fa-solid fa-lightbulb"></i> Insights & Predictions</li>
+                <li class="tab-link" data-tab="finance"><i class="fa-solid fa-wallet"></i> Expense Planning</li>
+                <li class="tab-link" data-tab="education"><i class="fa-solid fa-book-open"></i> Education & Updates</li>
+                <li class="tab-link" data-tab="donation"><i class="fa-solid fa-hand-holding-medical"></i> Donation & Emergency</li>
+            </ul>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <div id="tracking" class="tab-pane active">
+                    <h3>Health Tracking</h3>
+                    <p>Aggregate and monitor your heart rate, steps, calories and other health data directly from your smartwatch or phone. View daily statistics and track your progress over time.</p>
+                    <canvas id="trackingChart" width="400" height="200"></canvas>
+                </div>
+                <div id="insights" class="tab-pane">
+                    <h3>Insights & Predictions</h3>
+                    <p>HealthVault analyses your records to spot patterns such as insufficient exercise or elevated blood sugar. It provides personalised recommendations to prevent diseases and alerts you to potential future illnesses based on your current habits.</p>
+                    <p>Your data remains private and secure while enabling proactive healthcare decisions.</p>
+                </div>
+                <div id="finance" class="tab-pane">
+                    <h3>Expense Planning</h3>
+                    <p>Make budgeting simple by keeping track of all medical expenses including hospital bills, medicines and upcoming procedures. Interactive graphs help you visualise costs and prepare financially for future check‑ups.</p>
+                </div>
+                <div id="education" class="tab-pane">
+                    <h3>Education & Updates</h3>
+                    <p>Stay informed with up‑to‑date information on diseases, symptoms and preventive measures. The platform serves as a knowledge hub, empowering you with reliable medical content vetted by professionals.</p>
+                </div>
+                <div id="donation" class="tab-pane">
+                    <h3>Donation & Emergency</h3>
+                    <p>In urgent situations, quickly locate nearby blood or organ donors through our integrated network. HealthVault streamlines communication with hospitals to make lifesaving connections when it matters most.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <p>&copy; <span id="year2"></span> HealthVault. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="tracker.html">Tracker</a></li>
+                <li><a href="emergency.html">Emergency</a></li>
+                <li><a href="records.html">Records</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

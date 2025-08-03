@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthVault Tracker</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5/1hb7Gap6zFJ6TzjIj21tMPbPj5zVpR6Rslpq0wW5Vx6I1iKwV0v+Ux88VXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <h1 class="logo">HealthVault</h1>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="tracker.html" class="active">Tracker</a></li>
+                    <li><a href="emergency.html">Emergency</a></li>
+                    <li><a href="records.html">Records</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="tracker-page">
+        <div class="container">
+            <h2 class="page-title">Health Tracker</h2>
+            <p>Enter your daily health metrics to see your progress over time. HealthVault will use this information to provide actionable insights and help you stay motivated.</p>
+            <form id="trackerForm" class="tracker-form">
+                <div class="form-group">
+                    <label for="date">Date</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="steps">Steps</label>
+                    <input type="number" id="steps" min="0" placeholder="e.g. 7000" required>
+                </div>
+                <div class="form-group">
+                    <label for="calories">Calories Burned</label>
+                    <input type="number" id="calories" min="0" placeholder="e.g. 500" required>
+                </div>
+                <div class="form-group">
+                    <label for="heartrate">Average Heart Rate</label>
+                    <input type="number" id="heartrate" min="0" placeholder="e.g. 75" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Entry</button>
+            </form>
+
+            <canvas id="progressChart" width="400" height="200"></canvas>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <p>&copy; <span id="year3"></span> HealthVault. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="emergency.html">Emergency</a></li>
+                <li><a href="records.html">Records</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

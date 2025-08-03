@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Routine – HealthVault</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5/1hb7Gap6zFJ6TzjIj21tMPbPj5zVpR6Rslpq0wW5Vx6I1iKwV0v+Ux88VXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <h1 class="logo">HealthVault</h1>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="tracker.html">Tracker</a></li>
+                    <li><a href="emergency.html">Emergency</a></li>
+                    <li><a href="records.html">Records</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="routine-page">
+        <div class="container">
+            <h2 class="page-title">Daily Routine</h2>
+            <p>Organise your day with a healthy routine. Add activities and mark them as completed to stay on track.</p>
+            <form id="taskForm" class="tracker-form">
+                <div class="form-group">
+                    <label for="taskInput">Task</label>
+                    <input type="text" id="taskInput" placeholder="e.g. Morning Jog" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Task</button>
+            </form>
+            <ul id="taskList" class="task-list"></ul>
+        </div>
+    </section>
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <p>&copy; <span id="year11"></span> HealthVault. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="tracker.html">Tracker</a></li>
+                <li><a href="emergency.html">Emergency</a></li>
+                <li><a href="records.html">Records</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+        const taskForm = document.getElementById('taskForm');
+        const taskList = document.getElementById('taskList');
+        const tasks = [];
+        function renderTasks() {
+            taskList.innerHTML = '';
+            tasks.forEach((task, index) => {
+                const li = document.createElement('li');
+                li.className = 'task-item';
+                li.innerHTML = `<input type="checkbox" id="task-${index}" ${task.completed ? 'checked' : ''} />` +
+                               `<label for="task-${index}">${task.text}</label>`;
+                const checkbox = li.querySelector('input[type="checkbox"]');
+                checkbox.addEventListener('change', () => {
+                    tasks[index].completed = checkbox.checked;
+                    renderTasks();
+                });
+                taskList.appendChild(li);
+            });
+        }
+        taskForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const input = document.getElementById('taskInput');
+            const text = input.value.trim();
+            if (!text) return;
+            tasks.push({ text: text, completed: false });
+            input.value = '';
+            renderTasks();
+        });
+        renderTasks();
+    </script>
+</body>
+</html>

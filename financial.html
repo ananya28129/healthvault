@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Financial Tracker – HealthVault</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5/1hb7Gap6zFJ6TzjIj21tMPbPj5zVpR6Rslpq0wW5Vx6I1iKwV0v+Ux88VXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <h1 class="logo">HealthVault</h1>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="tracker.html">Tracker</a></li>
+                    <li><a href="emergency.html">Emergency</a></li>
+                    <li><a href="records.html">Records</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="financial-page">
+        <div class="container">
+            <h2 class="page-title">Financial Tracker</h2>
+            <p>Record your medical expenses and see a visual breakdown to help plan future costs.</p>
+            <form id="expenseForm" class="tracker-form">
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <input type="text" id="category" placeholder="e.g. Consultation" required>
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount (₹)</label>
+                    <input type="number" id="amount" min="0" placeholder="e.g. 500" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Add Expense</button>
+            </form>
+            <canvas id="expenseChart" width="400" height="200"></canvas>
+        </div>
+    </section>
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <p>&copy; <span id="year10"></span> HealthVault. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="tracker.html">Tracker</a></li>
+                <li><a href="emergency.html">Emergency</a></li>
+                <li><a href="records.html">Records</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Financial tracker
+        const expenseForm = document.getElementById('expenseForm');
+        const expenseChartCtx = document.getElementById('expenseChart');
+        const expenseLabels = [];
+        const expenseData = [];
+        let expenseChart;
+        function renderExpenseChart() {
+            if (expenseChart) expenseChart.destroy();
+            expenseChart = new Chart(expenseChartCtx, {
+                type: 'bar',
+                data: {
+                    labels: expenseLabels,
+                    datasets: [
+                        {
+                            label: 'Expenses (₹)',
+                            data: expenseData,
+                            backgroundColor: 'rgba(32, 119, 199, 0.6)',
+                            borderColor: '#2077c7',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Amount (₹)' }
+                        },
+                        x: {
+                            title: { display: true, text: 'Category' }
+                        }
+                    }
+                }
+            });
+        }
+        expenseForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const category = document.getElementById('category').value.trim();
+            const amount = parseFloat(document.getElementById('amount').value);
+            if (!category || isNaN(amount)) return;
+            expenseLabels.push(category);
+            expenseData.push(amount);
+            renderExpenseChart();
+            expenseForm.reset();
+        });
+        // initial render
+        renderExpenseChart();
+    </script>
+</body>
+</html>

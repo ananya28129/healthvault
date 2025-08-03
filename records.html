@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HealthVault Records Upload</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5/1hb7Gap6zFJ6TzjIj21tMPbPj5zVpR6Rslpq0wW5Vx6I1iKwV0v+Ux88VXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <h1 class="logo">HealthVault</h1>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="tracker.html">Tracker</a></li>
+                    <li><a href="emergency.html">Emergency</a></li>
+                    <li><a href="records.html" class="active">Records</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="records-page">
+        <div class="container">
+            <h2 class="page-title">Upload Medical Documents</h2>
+            <p>Upload your prescriptions, medical records and blood test reports. Once you have added your files, click Generate Comprehensive Report to view analysis of your health data.</p>
+            <form id="recordsForm" class="records-form">
+                <div class="form-group">
+                    <label for="documents">Select files</label>
+                    <input type="file" id="documents" multiple accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" />
+                </div>
+                <div id="fileList" class="file-list"></div>
+                <button type="button" id="generateReportBtn" class="btn btn-primary" disabled>Generate Comprehensive Report</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <p>&copy; <span id="year7"></span> HealthVault. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="tracker.html">Tracker</a></li>
+                <li><a href="emergency.html">Emergency</a></li>
+                <li><a href="records.html" class="active">Records</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

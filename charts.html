@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charts &amp; Graphs – HealthVault</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5/1hb7Gap6zFJ6TzjIj21tMPbPj5zVpR6Rslpq0wW5Vx6I1iKwV0v+Ux88VXHA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container nav-container">
+            <h1 class="logo">HealthVault</h1>
+            <nav>
+                <ul class="nav-list">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="features.html">Features</a></li>
+                    <li><a href="tracker.html">Tracker</a></li>
+                    <li><a href="emergency.html">Emergency</a></li>
+                    <li><a href="records.html">Records</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <section class="charts-page">
+        <div class="container">
+            <h2 class="page-title">Charts &amp; Graphs</h2>
+            <p>Visualise your health data through interactive charts. These charts summarise your activity and help you understand trends at a glance.</p>
+            <div class="chart-container">
+                <canvas id="lineChart" width="400" height="200"></canvas>
+            </div>
+            <div class="chart-container" style="margin-top: 2rem;">
+                <canvas id="pieChart" width="400" height="200"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container footer-container">
+            <p>&copy; <span id="year9"></span> HealthVault. All rights reserved.</p>
+            <ul class="footer-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="tracker.html">Tracker</a></li>
+                <li><a href="emergency.html">Emergency</a></li>
+                <li><a href="records.html">Records</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+        // Render line chart
+        const ctxLine = document.getElementById('lineChart');
+        if (ctxLine) {
+            new Chart(ctxLine, {
+                type: 'line',
+                data: {
+                    labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                    datasets: [
+                        {
+                            label: 'Steps',
+                            data: [5000, 7000, 6200, 8500, 9000, 7500, 8000],
+                            borderColor: '#1ba784',
+                            backgroundColor: 'rgba(27, 167, 132, 0.1)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Calories Burned',
+                            data: [400, 550, 500, 650, 700, 580, 620],
+                            borderColor: '#2077c7',
+                            backgroundColor: 'rgba(32, 119, 199, 0.1)',
+                            tension: 0.4
+                        },
+                        {
+                            label: 'Heart Rate',
+                            data: [70, 72, 68, 75, 78, 73, 74],
+                            borderColor: '#e6a019',
+                            backgroundColor: 'rgba(230, 160, 25, 0.1)',
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: { title: { display: true, text: 'Day' } },
+                        y: { title: { display: true, text: 'Value' } }
+                    }
+                }
+            });
+        }
+        // Render pie chart
+        const ctxPie = document.getElementById('pieChart');
+        if (ctxPie) {
+            new Chart(ctxPie, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Exercise', 'Rest', 'Work', 'Others'],
+                    datasets: [
+                        {
+                            data: [40, 25, 25, 10],
+                            backgroundColor: [
+                                '#1ba784',
+                                '#2077c7',
+                                '#e6a019',
+                                '#6b5b95'
+                            ],
+                            borderColor: '#ffffff',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
